@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main.css') }}">
+    <title>{{ projet.titre }}</title>
+</head>
+<body>
+    <div id="page-wrapper">
+        <header id="header" class="alt">
+            <h1><a href=" {{ url_for('home')}}"> Retour </a></h1>
+        </header>
+
+        <section id="main" class="wrapper">
+            <div class="inner">
+                <h2 class="major"> {{ projet.titre }}</h2>
+                <img src="{{ url_for('static', filename=projet.image) }}" alt="" style="width: 50%;"/>
+                <p>{{ projet.description }}</p>
+
+                <h3>Technologies utilisées :</h3>
+                <ul>
+                    {% for tech in projet.get_tech_list() %}
+                        <li> {{ tech }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

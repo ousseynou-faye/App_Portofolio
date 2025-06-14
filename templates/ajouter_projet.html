@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main.css') }}">
+</head>
+<body>
+<div id="page-wrapper">
+    <header id="header">
+        <h1>Ajouter un nouveau projet</h1>
+        <a href="{{ url_for('home') }}" class="button">Retour</a>
+    </header>
+
+    <section class="wrapper">
+        <div class="inner">
+            <form method="POST" action="{{ url_for('ajouter_projet') }}">
+                {{ form.hidden_tag() }} <!-- CSRF token -->
+
+                <div class="fields">
+                    <div class="field">
+                        {{ form.titre.label }} {{ form.titre(class="input") }}
+                        {% for error in form.titre.errors %}
+                            <small style="color: red;">{{ error }}</small>
+                        {% endfor %}
+                    </div>
+                    <div class="field">
+                        {{ form.slug.label }} {{ form.slug(class="input") }}
+                        {% for error in form.slug.errors %}
+                            <small style="color: red;">{{ error }}</small>
+                        {% endfor %}
+                    </div>
+                    <div class="field">
+                        {{ form.description.label }} {{ form.description(class="input") }}
+                        {% for error in form.description.errors %}
+                            <small style="color: red;">{{ error }}</small>
+                        {% endfor %}
+                    </div>
+                    <div class="field">
+                        {{ form.image.label }} {{ form.image(class="input") }}
+                    </div>
+                    <div class="field">
+                        {{ form.tech.label }} {{ form.tech(class="input") }}
+                    </div>
+                </div>
+
+                <ul class="actions">
+                    <li>{{ form.submit(class="primary") }}</li>
+                </ul>
+            </form>
+
+        </div>
+    </section>
+</div>
+</body>
+</html>

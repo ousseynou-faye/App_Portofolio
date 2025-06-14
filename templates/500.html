@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main.css') }}">
+</head>
+<body>
+    <div id="page-wrapper">
+        <header id="header">
+            <h1>Erreur 500 - Problème interne</h1>
+            <p>Oups ! Quelque chose s’est mal passé côté serveur.</p>
+            <img src="{{ url_for('static', filename='images/500.png') }}" alt="500" style="width: 50%;"/>
+            <a href="{{ url_for('home') }}" class="button">Retour à l'accueil</a>
+        </header>
+    </div>
+</body>
+</html>
